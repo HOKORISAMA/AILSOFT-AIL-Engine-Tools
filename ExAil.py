@@ -150,7 +150,7 @@ def LzssUnpack(input_stream, output):
                 dst += 1
 
 def IsSaneCount(count):
-    return count > 0 and count < 400000  # Sanity check
+    return count > 0 and count < 400000  # Example sanity check, adjust as needed
 
 def CheckPlacement(entry, max_offset):
     return entry.Offset + entry.Size <= max_offset
@@ -171,7 +171,7 @@ def read_int32(data, offset):
 def read_uint32(data, offset):
     return int.from_bytes(data[offset:offset + 4], byteorder='little', signed=False)
 
-def unpack_afchuve(input_file, output_dir):
+def unpack_archive(input_file, output_dir):
     arc_file = TryOpen(input_file)
     if arc_file is None:
         print(f"Failed to open {input_file}")
@@ -188,12 +188,12 @@ def unpack_afchuve(input_file, output_dir):
             print(f"Extracted {entry.Name}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Unpack afchuve files to a directory.")
-    parser.add_argument("input_file", help="Path to the input afchuve file.")
+    parser = argparse.ArgumentParser(description="Unpack archive files to a directory.")
+    parser.add_argument("input_file", help="Path to the input archive file.")
     parser.add_argument("output_dir", help="Directory to extract the files to.")
     args = parser.parse_args()
 
-    unpack_afchuve(args.input_file, args.output_dir)
+    unpack_archive(args.input_file, args.output_dir)
 
 if __name__ == "__main__":
     main()
