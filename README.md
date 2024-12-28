@@ -1,2 +1,2 @@
-### Exract AIL Engine resource archives.
+### Tools for AIL Engine resource archives.
 #galgames.
